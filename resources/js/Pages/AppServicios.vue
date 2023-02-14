@@ -134,8 +134,6 @@ function AsignProv(value) {
                 @click="
                     asign = true;
                     provs = false;
-                    form.prov = prov.id;
-                    submit();
                 "
             >
                 <h3>Asignar</h3>
@@ -144,7 +142,12 @@ function AsignProv(value) {
     </ProvsModal>
     <AsigModal :show="asign" :elem="prov">
         <template #button>
-            <Boton @click="closeModal">
+            <Boton
+                @click="
+                    form.prov = prov.id;
+                    submit();
+                "
+            >
                 <h3>Aceptar</h3>
             </Boton>
         </template>
