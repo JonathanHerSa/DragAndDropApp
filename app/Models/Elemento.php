@@ -11,6 +11,7 @@ class Elemento extends Model
     protected $fillable = [
         'titulo',
         'descripcion',
+        'Prov_id',
         'listas_id'
     ];
 }
