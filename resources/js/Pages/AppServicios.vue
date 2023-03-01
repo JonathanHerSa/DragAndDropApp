@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import CardsModal from "../Pages/AppServicios/CardsModal.vue";
 import ProvsModal from "../Pages/AppServicios/ProvsModal.vue";
@@ -43,6 +43,12 @@ const closeModal = () => {
 function AsignProv(value) {
     prov.value = value;
 }
+
+onMounted(() => {
+    Echo.channel("AppServicio").listen("AppServicios", (e) => {
+        elem.value = e.items;
+    });
+});
 </script>
 
 <template>
@@ -59,7 +65,7 @@ function AsignProv(value) {
                         item-key="id"
                         animation="300"
                         tag="div"
-                        class="grid gap-2 items-start content-start px-3 py-1"
+                        class="grid gap-2 items-start content-start px-3 py-1 h-full"
                         drag-class="drag"
                         ghost-class="ghost"
                         @drop="form.list = lista.id"
@@ -147,6 +153,8 @@ function AsignProv(value) {
                     form.prov = prov.id;
                     submit();
                 "
+                :class="{ 'opacity-25': form.processing }"
+                :disabled="form.processing"
             >
                 <h3>Aceptar</h3>
             </Boton>

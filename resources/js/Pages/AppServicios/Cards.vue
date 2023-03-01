@@ -1,6 +1,6 @@
 <script setup>
 import Momento from "moment";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 const props = defineProps({
     element: {
         type: Object,

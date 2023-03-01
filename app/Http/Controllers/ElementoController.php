@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AppServicios;
 use App\Models\Elemento;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -30,6 +31,7 @@ class ElementoController extends Controller
                 'updated_at' => date(now()),
             ]);
         }
+        event(new AppServicios);
         return redirect(route('lista.index'));
     }
 }

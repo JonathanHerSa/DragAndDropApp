@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ListaController;
-use App\Http\Controllers\ElementoController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ListaController;
+use App\Http\Controllers\AmchartController;
+use App\Http\Controllers\ElementoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::get('/', function () {
 });
 
 Route::get('/appserv', [ListaController::class, 'index'])->name('lista.index');
-Route::post('/appserv', [ElementoController::class, 'store'])->name('elem.store');
+Route::post('/appserv/store', [ElementoController::class, 'store'])->name('elem.store');
 
 Route::middleware([
     'auth:sanctum',
